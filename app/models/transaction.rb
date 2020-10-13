@@ -5,4 +5,7 @@ class Transaction < ApplicationRecord
   # RubyMoney config
   monetize :value_cents
 
+  # Validates
+  validates :value, numericality: { greater_than: 0 }
+
 end
