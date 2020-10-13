@@ -1,0 +1,99 @@
+<div class="container-fluid">
+
+  <!-- Page Heading -->
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Painel</h1>
+  </div>
+
+  <!-- Content Row -->
+  <div class="row">
+
+    <!-- Store card -->
+    <div class="col-xl-6 col-md-6 mb-4">
+      <div class="card border-left-primary shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Lojas cadastradas</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800"><%= @stores_count %></div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-store fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- User card -->
+    <div class="col-xl-6 col-md-6 mb-4">
+      <div class="card border-left-success shadow h-100 py-2">
+        <div class="card-body">
+          <div class="row no-gutters align-items-center">
+            <div class="col mr-2">
+              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Usuários cadastrados</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800"><%= @users_count %></div>
+            </div>
+            <div class="col-auto">
+              <i class="fas fa-users fa-2x text-gray-300"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content Row -->
+
+  <div class="row">
+
+    <!-- Dashboard support -->
+    <div class="col-xl-12 col-lg-7">
+      <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">Guia e referências</h6>
+        </div>
+        <div class="card-body">
+          <div class="h6 mb-0 font-weight-bold text-gray-800">Menu</div>
+          <ul>
+            <li>Painel - Exibir dados quantitativos, além de um guia simples e as referências utilizadas no
+              desenvolvimento deste projeto.</li>
+            <li>Arquivos - Fazer upload de arquivos que seguem o mesmo padrão do
+              <%= link_to 'CNAB', 'https://github.com/Pagnet/desafio-back-end/blob/master/CNAB.txt', target:"_blank" %>.
+            </li>
+            <li>Lojas/Transações - Visualizar e excluir lojas e transações, além de verificar o saldo por loja. </li>
+            <li>Regras de transações - Visualizar todas as regras de transações utilizadas por este sistema. As regras
+              são baseadas na seguinte documentação:
+              <%= link_to 'Documentação do desafio', 'https://github.com/Pagnet/desafio-back-end', target:"_blank" %>.
+            </li>
+            <li>Usuários - Cadastrar, editar, visualizar e excluir usuários. </li>
+          </ul>
+
+          <div class="h6 mb-0 font-weight-bold text-gray-800">Referências</div>
+          <ul>
+            <li>Ruby - Versão 2.6.3 </li>
+            <li>Rails - Versão 5.2.0 </li>
+            <li>Theme SbAdmin2 (Bootstrap) -
+              <%= link_to 'Página oficial', 'https://startbootstrap.com/themes/sb-admin-2/', target:"_blank" %>. </li>
+          </ul>
+
+          <div class="h6 mb-0 font-weight-bold text-gray-800">Sobre</div>
+          <ul>
+            <li>LinkedIn -
+              <%= link_to 'https://www.linkedin.com/in/davide-almeida-919239b1/', 'https://www.linkedin.com/in/davide-almeida-919239b1/', target:"_blank" %>
+            </li>
+            <li>Github -
+              <%= link_to 'https://github.com/davide-almeida', 'https://github.com/davide-almeida', target:"_blank" %>
+            </li>
+          </ul>
+
+          <p class="mb-0">Eu me chamo Davide Almeida, sou desenvolvedor Ruby on Rails e atualmente estudante no curso de
+            Sistema de Informações. Esse projeto tem como objetivo a minha submissão no processo seletivo de uma vaga
+            para desenvolvedor Ruby on Rails. Todas as regras e condições que este projeto busca atender podem ser
+            encontradas na
+            <%= link_to 'Documentação do desafio', 'https://github.com/Pagnet/desafio-back-end', target:"_blank" %>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

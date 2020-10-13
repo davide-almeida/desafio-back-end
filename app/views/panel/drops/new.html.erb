@@ -1,0 +1,43 @@
+<!-- Show errors -->
+<% if @drop.errors.any? %>
+  <div class="alert alert-danger alert-dismissable">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+    <!-- message -->
+    <ul>
+      <% @drop.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+
+  </div>
+<% end %>
+
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Arquivos</h1>
+    <p class="mb-4"></p>
+
+    <!-- Drop form -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Formulário de cadastro</h6>
+        </div>
+        <div class="card-body">
+            <%= form_for([:panel, @drop], :html => {:class => 'form-horizontal form-label-left'}) do |f| %>
+                <div class="form-group">
+                    <label for="inputTitle">Título</label>
+                    <%= f.text_field :title, required:"required", class:"form-control", id:"inputTitle", placeholder:"Ex.: Arquivo teste", autofocus: true %>
+                </div>
+                <div class="form-group">
+                    <label>Arquivo</label>
+                    <%= f.file_field :file, required:"required", class: "form-control-file" %>
+                </div>
+                <div class="form-group">
+                    <%= f.submit "Enviar", class:"btn btn-primary", data: { disable_with: "Aguarde..." } %>
+                </div>
+            <% end %>
+        </div>
+        <div class="card-footer py-3"></div>
+    </div>
+</div>

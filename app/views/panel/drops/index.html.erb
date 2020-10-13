@@ -1,0 +1,56 @@
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Arquivos</h1>
+    <p class="mb-4"></p>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <%= link_to new_panel_drop_path, class: "btn btn-primary btn-icon-split", data: {'toggle': "tooltip", 'placement': "top", 'original-title': "Cadastrar novo arquivo (CNAB)"} do  %>
+                <span class="text">Cadastrar</span>
+            <% end %>
+        </div>
+    </div>
+
+    <!-- Files list - datatable -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Lista de arquivos</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover" id="datatable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Título</th>
+                            <th>Arquivo</th>
+                            <th>Autor</th>
+                            <th>Data de envio</th>
+                            <th>Opções</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @drops.each do |drop| %>
+                            <tr>
+                                <th><%= drop.id %></th>
+                                <th><%= drop.title %></th>
+                                <th>
+                                    <% if drop.file.present? %>
+                                        <%= link_to 'Download', drop.file %>
+                                    <% end %>
+                                </th>
+                                <th><%= drop.user.email %></th>
+                                <th><%= l(drop.created_at) %></th>
+                                <th width="10%" style="text-align:center">
+                                    <%= link_to panel_drop_path(drop.id), class:"btn btn-danger btn-circle", data: {confirm: "Você realmente deseja excluir o arquivo [#{drop.title}]?", 'toggle': "tooltip", 'placement': "top", 'original-title': "Excluir"}, method: :delete do  %>
+                                        <i class="far fa-trash-alt"></i>
+                                    <% end %>
+                                </th>
+                            </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

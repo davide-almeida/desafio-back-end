@@ -1,0 +1,53 @@
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Lojas/Transações</h1>
+    <p class="mb-4"></p>
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            Para ver as transações de uma das lojas utilize o botão <div class="btn-sm btn-info btn-circle"><i class="fas fa-chart-line"></i></div> na coluna "Opções" da tabela abaixo.
+        </div>
+    </div>
+
+    <!-- Files list - datatable -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Lista de Lojas</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover" id="datatable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nome da loja</th>
+                            <th>Representante</th>
+                            <th>N° de Transações</th>
+                            <th>Opções</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @stores.each do |store| %>
+                            <tr>
+                                <th><%= store.id %></th>
+                                <th><%= store.name %></th>
+                                <th><%= store.owner %></th>
+                                <th><%= store.transactions.count %></th>
+                                <th width="10%" style="text-align:center">
+                                    <%= link_to panel_store_transactions_path(store.id), class: "btn btn-info btn-circle", data: {'toggle': "tooltip", 'placement': "top", 'original-title': "Transações"}, method: :get do  %>
+                                        <i class="fas fa-chart-line"></i>
+                                    <% end %>
+                                    <%= link_to panel_store_path(store.id), class:"btn btn-danger btn-circle", data: {confirm: "Você realmente deseja excluir a loja [#{store.name}]?", 'toggle': "tooltip", 'placement': "top", 'original-title': "Excluir"}, method: :delete do  %>
+                                        <i class="far fa-trash-alt"></i>
+                                    <% end %>
+                                </th>
+                            </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

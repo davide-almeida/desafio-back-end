@@ -78,3 +78,20 @@ Este desafio foi baseado neste outro desafio: https://github.com/lschallenges/da
 ---
 
 Boa sorte!
+
+---
+
+# Recursos utilizados
+- Ruby - Versão 2.6.3
+- Rails - Versão 5.2.0
+- Theme SbAdmin2 (Bootstrap) - [Página Oficial](https://startbootstrap.com/themes/sb-admin-2/)
+
+# Instruções de Uso
+
+1. Clone este repositório ``git clone git@github.com:davide-almeida/desafio-back-end.git <nome do projeto>``
+2. Acesse o repositório pelo terminal e digite ``bundle``
+3. Crie as tabelas do banco de dados, "rode" as migrations e "popule" o banco de dados ``rails db:create db:migrate db:seed``
+4. Rode a aplicação ``rails s``
+5. Agora a aplicação pode ser acessada pelo endereço http://localhost:3000
+
+---

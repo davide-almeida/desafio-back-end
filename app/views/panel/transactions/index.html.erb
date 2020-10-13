@@ -1,0 +1,110 @@
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Transações da loja <%= @store.name %></h1>
+    <p class="mb-4"></p>
+
+    <div class="row">
+        <!-- Balance -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Saldo</div>
+                    <% if @balance >= 0 %>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">R$<%= humanized_money @balance %></div>
+                    <% else %>
+                        <div class="h5 mb-0 font-weight-bold text-red-800">R$<%= humanized_money @balance %></div>
+                    <% end %>
+                </div>
+                <div class="col-auto">
+                    <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        
+        <!-- Input -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Entrada</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">R$<%= humanized_money @input %></div>
+                </div>
+                <div class="col-auto">
+                    <i class="fas fa-plus fa-2x text-gray-300"></i>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+
+        <!-- Output -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Saída</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">R$<%= humanized_money @output %></div>
+                </div>
+                <div class="col-auto">
+                    <i class="fas fa-minus fa-2x text-gray-300"></i>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Files list - datatable -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Lista de transações</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover" id="datatable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Tipo</th>
+                            <th>Descrição</th>
+                            <th>Natureza</th>
+                            <th>Valor</th>
+                            <th>CPF</th>
+                            <th>Cartão</th>
+                            <th>Data de ocorrência</th>
+                            <th>Hora de ocorrência</th>
+                            <th>Opções</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @transactions.each do |transaction| %>
+                            <tr>
+                                <th><%= transaction.id %></th>
+                                <th><%= transaction.transaction_rule.kind %></th>
+                                <th><%= transaction.transaction_rule.description %></th>
+                                <th><%= transaction.transaction_rule.source %></th>
+                                <th>R$<%= humanized_money transaction.value_cents %></th>
+                                <th><%= transaction.cpf_number %></th>
+                                <th><%= transaction.card_number %></th>
+                                <th><%= transaction.occurrence_time.strftime("%d/%m/%Y") %></th>
+                                <th><%= transaction.occurrence_time.strftime("%H:%M:%S %z") %></th>
+                                <th width="10%" style="text-align:center">
+                                    <%= link_to panel_store_transaction_path(@store.id, transaction.id), class:"btn btn-danger btn-circle", data: {confirm: "Você realmente deseja excluir a transação no valor de R$#{humanized_money transaction.value_cents}?", 'toggle': "tooltip", 'placement': "top", 'original-title': "Excluir"}, method: :delete do  %>
+                                        <i class="far fa-trash-alt"></i>
+                                    <% end %>
+                                </th>
+                            </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
