@@ -94,4 +94,8 @@ Boa sorte!
 4. Rode a aplicação ``rails s``
 5. Agora a aplicação pode ser acessada pelo endereço http://localhost:3000
 
+# Screenshot
+![print01](https://user-images.githubusercontent.com/12315953/95801569-0fefbd00-0cd1-11eb-8032-4eae16c98e51.png)
+![print02](https://user-images.githubusercontent.com/12315953/95801579-167e3480-0cd1-11eb-9b57-7ba89642205c.png)
+
 ---
